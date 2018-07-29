@@ -12,6 +12,12 @@ namespace AtmExercise.Data
             this.CreateFirstDataAsync();
         }
 
+        public AtmContext()
+           : base()
+        {
+            this.CreateFirstDataAsync();
+        }
+
         public DbSet<CreditCard> CreditCards { get; set; }
         public DbSet<Operation> Operations { get; set; }
 
