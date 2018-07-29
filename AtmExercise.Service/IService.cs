@@ -15,5 +15,7 @@ namespace AtmExercise.Service
         bool Exists(string number);
 
         T GetBy(string[] parameters);
+
+        List<T> GetAllBy(string criteria);
     }
 }

@@ -51,7 +51,7 @@ namespace AtmExercise.Web.Controllers
             {
                 var creditCardNumberSanitized = creditCardNumber.Replace("-", string.Empty);
                 var creditCard = this._ccService.GetBy(new string[] { creditCardNumberSanitized, creditCardPin });
-                return RedirectToActionPermanent("Home", new { });
+                return RedirectToActionPermanent("Home", "Atm", new { creditCardId = creditCard.Id });
             }
             catch (AtmException ex)
             {

@@ -1,6 +1,7 @@
 ﻿using AtmExercise.Data;
 using AtmExercise.Model;
 using AtmExercise.Model.Exception;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AtmExercise.Service
@@ -79,6 +80,11 @@ namespace AtmExercise.Service
         public void Update(CreditCard entity)
         {
             this._ccRepository.Update(entity);
+        }
+
+        public List<CreditCard> GetAllBy(string criteria)
+        {
+            throw new System.NotImplementedException();
         }
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AtmExercise.Model;
+using System;
 
 namespace AtmExercise.Data
 {
@@ -36,8 +37,41 @@ namespace AtmExercise.Data
                 Pin = "1234"
             };
 
+            var operationOne = new Operation
+            {
+                Id = 1,
+                Code = OperationTypeEnum.Balance,
+                CreditCard = creditCardOne,
+                CreditCardId = 1,
+                Detail = "Balance",
+                Time = DateTime.Now
+            };
+
+            var operationTwo = new Operation
+            {
+                Id = 2,
+                Code = OperationTypeEnum.Balance,
+                CreditCard = creditCardOne,
+                CreditCardId = 1,
+                Detail = "Balance",
+                Time = DateTime.Now
+            };
+
+            var operationThree = new Operation
+            {
+                Id = 3,
+                Code = OperationTypeEnum.WithDrawal,
+                CreditCard = creditCardOne,
+                CreditCardId = 1,
+                Detail = "Withdrawal of 100",
+                Time = DateTime.Now
+            };
+
             this.CreditCards.Add(creditCardOne);
             this.CreditCards.Add(creditCardTwo);
+            this.Operations.Add(operationOne);
+            this.Operations.Add(operationTwo);
+            this.Operations.Add(operationThree);
 
             this.SaveChanges();
         }

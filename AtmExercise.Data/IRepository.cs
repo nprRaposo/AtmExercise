@@ -11,5 +11,7 @@ namespace AtmExercise.Data
         T GetById(int id);
 
         T GetBy(string number);
+
+        List<T> GetAllBy(string criteria);
     }
 }

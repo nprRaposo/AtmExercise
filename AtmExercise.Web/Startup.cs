@@ -86,6 +86,8 @@ namespace AtmExercise.Web
             var context = new AtmContext(options);
 
             // This is where our bindings are configurated
+            kernel.Bind<IService<Operation>>().To<OperationService>().InScope(RequestScope);
+            kernel.Bind<IRepository<Operation>>().To<OperationRepository>().InScope(RequestScope);
             kernel.Bind<IService<CreditCard>>().To<CreditCardService>().InScope(RequestScope);
             kernel.Bind<IRepository<CreditCard>>().To<CreditCardRepository>().InScope(RequestScope);
             kernel.Bind<AtmContext>().ToConstant(context);
