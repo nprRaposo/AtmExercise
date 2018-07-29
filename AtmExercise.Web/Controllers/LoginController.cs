@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AtmExercise.Web.Controllers
 {
-    public class CreditCardController : Controller
+    public class LoginController : Controller
     {
 
         private readonly IService<CreditCard> _ccService;
 
-        public CreditCardController(IService<CreditCard> ccService)
+        public LoginController(IService<CreditCard> ccService)
         {
             this._ccService = ccService;
         }
@@ -51,7 +51,7 @@ namespace AtmExercise.Web.Controllers
             {
                 var creditCardNumberSanitized = creditCardNumber.Replace("-", string.Empty);
                 var creditCard = this._ccService.GetBy(new string[] { creditCardNumberSanitized, creditCardPin });
-                return View();
+                return RedirectToActionPermanent("Home", new { });
             }
             catch (AtmException ex)
             {
@@ -61,6 +61,11 @@ namespace AtmExercise.Web.Controllers
             {
                 return RedirectToActionPermanent("Error", new { reason = ex.Message });
             }
+        }
+
+        public ActionResult Home()
+        {
+            return View();
         }
 
         public ActionResult Error(string reason)

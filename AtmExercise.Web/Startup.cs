@@ -63,7 +63,7 @@ namespace AtmExercise.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=CreditCard}/{action=Index}/{id?}");
+                    template: "{controller=Login}/{action=Index}/{id?}");
             });
         }
 
