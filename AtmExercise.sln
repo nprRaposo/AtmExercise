@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmExercise.Model", "AtmExe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmExercise.Test", "AtmExercise.Test\AtmExercise.Test.csproj", "{AA0D4D1B-A367-4626-B271-2167F98323AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmExercise.Service", "AtmExercise.Service\AtmExercise.Service.csproj", "{C7ADA3D6-332C-4EC9-AF59-69B21A37FC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmExercise.Service", "AtmExercise.Service\AtmExercise.Service.csproj", "{C7ADA3D6-332C-4EC9-AF59-69B21A37FC9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmExercise.Data", "AtmExercise.Data\AtmExercise.Data.csproj", "{3E5C495D-69CF-4828-92F0-F78033707816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmExercise.Data", "AtmExercise.Data\AtmExercise.Data.csproj", "{3E5C495D-69CF-4828-92F0-F78033707816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmExercise.Web", "AtmExercise.Web\AtmExercise.Web.csproj", "{4EBCB896-B3E5-4978-A94B-47150BFADB18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmExercise.Web", "AtmExercise.Web\AtmExercise.Web.csproj", "{4EBCB896-B3E5-4978-A94B-47150BFADB18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

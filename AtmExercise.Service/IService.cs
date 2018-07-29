@@ -6,10 +6,14 @@ namespace AtmExercise.Service
 {
     public interface IService<T>
     {
-        int Save(T entity);
+        void Update(T entity);
 
         T GetById(int id);
 
         T GetBy(string number);
+
+        bool Exists(string number);
+
+        T GetBy(string[] parameters);
     }
 }

@@ -20,12 +20,17 @@ namespace AtmExercise.Data
 
         public CreditCard GetById(int id)
         {
-            throw new NotImplementedException();
+            return this._context.CreditCards.FirstOrDefault(cc => cc.Id == id);
         }
 
         public void Update(CreditCard entity)
         {
-            throw new NotImplementedException();
+            var creditCard = this.GetById(entity.Id);
+            creditCard.Attempts = entity.Attempts;
+            creditCard.Balance = entity.Balance;
+            creditCard.Blocked = entity.Blocked;
+
+            this._context.SaveChanges();
         }
     }
 }

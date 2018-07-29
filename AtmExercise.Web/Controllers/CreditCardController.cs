@@ -28,8 +28,8 @@ namespace AtmExercise.Web.Controllers
             try
             {
                 var creditCardNumberSanitized = creditCardNumber.Replace("-", string.Empty);
-                var creditCard = this._ccService.GetBy(creditCardNumberSanitized);
-                return RedirectToActionPermanent("EnteringPing", new {  creditCard });
+                var creditCard = this._ccService.Exists(creditCardNumberSanitized);
+                return RedirectToActionPermanent("EnteringPing", new { creditCardNumber });
             }
             catch (AtmException ex)
             {
@@ -37,16 +37,30 @@ namespace AtmExercise.Web.Controllers
             }
         }
 
-        public ActionResult EnteringPing(CreditCard creditCard)
+        public ActionResult EnteringPing(string creditCardNumber, bool pinFailed)
         {
-            ViewBag.CreditCardNumber = creditCard.Number;
+            ViewBag.CreditCardNumber = creditCardNumber;
+            ViewBag.PinFailed = pinFailed;
             return View();
         }
 
         [HttpPost]
-        public ActionResult EnteringPing(string creditCardPin)
+        public ActionResult EnteringPingPost(string creditCardNumber, string creditCardPin)
         {
-            return View();
+            try
+            {
+                var creditCardNumberSanitized = creditCardNumber.Replace("-", string.Empty);
+                var creditCard = this._ccService.GetBy(new string[] { creditCardNumberSanitized, creditCardPin });
+                return View();
+            }
+            catch (AtmException ex)
+            {
+                return RedirectToActionPermanent("EnteringPing", new { creditCardNumber, pinFailed = true });
+            }
+            catch (AtmExceptionCardBlocked ex)
+            {
+                return RedirectToActionPermanent("Error", new { reason = ex.Message });
+            }
         }
 
         public ActionResult Error(string reason)
