@@ -53,7 +53,7 @@ namespace AtmExercise.Web.Controllers
                 var creditCard = this._ccService.GetBy(new string[] { creditCardNumberSanitized, creditCardPin });
                 return RedirectToActionPermanent("Home", "Atm", new { creditCardId = creditCard.Id });
             }
-            catch (AtmException ex)
+            catch (AtmException)
             {
                 return RedirectToActionPermanent("EnteringPing", new { creditCardNumber, pinFailed = true });
             }
@@ -72,29 +72,6 @@ namespace AtmExercise.Web.Controllers
         {
             ViewBag.Reason = reason;
             return View();
-        }
-
-        // GET: CreditCard/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CreditCard/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
