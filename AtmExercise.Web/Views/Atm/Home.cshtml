@@ -1,11 +1,5 @@
 ﻿@model IEnumerable<AtmExercise.Model.Operation>
 
-<ul class="nav nav-tabs">
-    <li>@Html.ActionLink("Home", "Home", "Atm", new { creditCardId = ViewBag.CreditCardId })</li>
-    <li>@Html.ActionLink("Balance", "Balance", "Atm", new { creditCardId = ViewBag.CreditCardId })</li>
-    <li>@Html.ActionLink("WithDrawal", "WithDrawal", "Atm", new { creditCardId = ViewBag.CreditCardId }) </li>
-</ul>
-
 <div class="tab-content">
     <table class="table">
         <thead>

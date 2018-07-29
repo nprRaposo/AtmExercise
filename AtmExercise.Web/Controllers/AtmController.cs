@@ -25,6 +25,7 @@ namespace AtmExercise.Web.Controllers
         public IActionResult Home(int creditCardId)
         {
             ViewBag.CreditCardId = creditCardId;
+            ViewBag.IsLogged = true;
             var operations = this._operationService.GetAllBy(creditCardId.ToString());
             return View(operations);
         }
@@ -32,6 +33,7 @@ namespace AtmExercise.Web.Controllers
         public IActionResult Balance(int creditCardId)
         {
             ViewBag.CreditCardId = creditCardId;
+            ViewBag.IsLogged = true;
             this._operationService.InsertBalance(creditCardId);
             var creditCard = this._ccService.GetById(creditCardId);
             return PartialView("_Balance", creditCard);
@@ -39,6 +41,7 @@ namespace AtmExercise.Web.Controllers
 
         public IActionResult WithDrawal(int creditCardId)
         {
+            ViewBag.IsLogged = true;
             ViewBag.CreditCardId = creditCardId;
             return PartialView("_WithDrawal");
         }
@@ -46,6 +49,7 @@ namespace AtmExercise.Web.Controllers
         [HttpPost]
         public IActionResult WithDrawal(int creditCardId, int amount)
         {
+            ViewBag.IsLogged = true;
             ViewBag.CreditCardId = creditCardId;
             try
             {
