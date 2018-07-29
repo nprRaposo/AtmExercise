@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AtmExercise.Model;
+using AtmExercise.Model.Exception;
 using AtmExercise.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,9 @@ namespace AtmExercise.Web.Controllers
     {
 
         private readonly IService<CreditCard> _ccService;
-        private readonly IService<Operation> _operationService;
+        private readonly OperationService _operationService;
 
-        public AtmController(IService<CreditCard> ccService, IService<Operation> operationService)
+        public AtmController(IService<CreditCard> ccService, OperationService operationService)
         {
             this._ccService = ccService;
             this._operationService = operationService;
@@ -27,15 +28,33 @@ namespace AtmExercise.Web.Controllers
             return View(operations);
         }
 
-        public IActionResult Balance(int id)
+        public IActionResult Balance(int creditCardId)
         {
-            var creditCard = this._ccService.GetById(id);
+            ViewBag.CreditCardId = creditCardId;
+            this._operationService.InsertBalance(creditCardId);
+            var creditCard = this._ccService.GetById(creditCardId);
             return PartialView("_Balance", creditCard);
         }
 
-        public IActionResult WithDrawal()
+        public IActionResult WithDrawal(int creditCardId)
         {
+            ViewBag.CreditCardId = creditCardId;
             return PartialView("_WithDrawal");
+        }
+
+        [HttpPost]
+        public IActionResult WithDrawal(int creditCardId, int amount)
+        {
+            ViewBag.CreditCardId = creditCardId;
+            try
+            {
+                this._operationService.InsertWithDrawal(creditCardId, amount);
+                return PartialView("_WithDrawal");
+            }
+            catch (AtmNotCreditException ex)
+            {
+                return RedirectToActionPermanent("Error", "Login", new { reason = ex.Message });
+            }
         }
     }
 }

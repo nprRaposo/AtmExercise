@@ -6,7 +6,7 @@ namespace AtmExercise.Service
 {
     public interface IService<T>
     {
-        void Update(T entity);
+        void UpSertEntity(T entity);
 
         T GetById(int id);
 

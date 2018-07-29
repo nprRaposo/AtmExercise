@@ -29,9 +29,16 @@ namespace AtmExercise.Data
             return this._context.Operations.Where(o => o.CreditCardId == int.Parse(criteria)).ToList();
         }
 
-        public void Update(Operation operation)
+        public void UpSertEntity(Operation operation)
         {
-            throw new NotImplementedException();
+            var operationSave = this.GetById(operation.Id);
+
+            if (operationSave == null)
+            {
+                this._context.Operations.Add(operation);
+            }
+
+            this._context.SaveChanges();
         }
     }
 }

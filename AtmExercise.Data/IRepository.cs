@@ -6,7 +6,7 @@ namespace AtmExercise.Data
 {
     public interface IRepository <T>
     {
-        void Update(T entity);
+        void UpSertEntity(T entity);
 
         T GetById(int id);
 

@@ -60,7 +60,7 @@ namespace AtmExercise.Service
             if (creditCard.Pin == pin)
             {
                 creditCard.Attempts = 0;
-                this.Update(creditCard);
+                this.UpSertEntity(creditCard);
                 return creditCard;
             }
                 
@@ -69,17 +69,17 @@ namespace AtmExercise.Service
             if (creditCard.Attempts == 4)
             {
                 creditCard.Blocked = true;
-                this.Update(creditCard);
-                throw new AtmExceptionCardBlocked("The credit card has been blocked because of the 4 attempts made to enter");
+                this.UpSertEntity(creditCard);
+                throw new AtmCardBlockedException("The credit card has been blocked because of the 4 attempts made to enter");
             }
 
-            this.Update(creditCard);
+            this.UpSertEntity(creditCard);
             throw new AtmException("The pin entered is Wrong");
         }
 
-        public void Update(CreditCard entity)
+        public void UpSertEntity(CreditCard entity)
         {
-            this._ccRepository.Update(entity);
+            this._ccRepository.UpSertEntity(entity);
         }
 
         public List<CreditCard> GetAllBy(string criteria)

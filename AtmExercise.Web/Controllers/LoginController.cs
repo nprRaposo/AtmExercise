@@ -57,7 +57,7 @@ namespace AtmExercise.Web.Controllers
             {
                 return RedirectToActionPermanent("EnteringPing", new { creditCardNumber, pinFailed = true });
             }
-            catch (AtmExceptionCardBlocked ex)
+            catch (AtmCardBlockedException ex)
             {
                 return RedirectToActionPermanent("Error", new { reason = ex.Message });
             }

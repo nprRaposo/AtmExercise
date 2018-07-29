@@ -29,7 +29,7 @@ namespace AtmExercise.Data
             return this._context.CreditCards.FirstOrDefault(cc => cc.Id == id);
         }
 
-        public void Update(CreditCard entity)
+        public void UpSertEntity(CreditCard entity)
         {
             var creditCard = this.GetById(entity.Id);
             creditCard.Attempts = entity.Attempts;

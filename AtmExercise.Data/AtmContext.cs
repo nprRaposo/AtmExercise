@@ -19,7 +19,6 @@ namespace AtmExercise.Data
         {
             var creditCardOne = new CreditCard
             {
-                Id = 1,
                 Attempts = 0,
                 Balance = 1500,
                 Blocked = false,
@@ -29,7 +28,6 @@ namespace AtmExercise.Data
 
             var creditCardTwo = new CreditCard
             {
-                Id = 2,
                 Attempts = 0,
                 Balance = 1500,
                 Blocked = false,
@@ -39,7 +37,6 @@ namespace AtmExercise.Data
 
             var operationOne = new Operation
             {
-                Id = 1,
                 Code = OperationTypeEnum.Balance,
                 CreditCard = creditCardOne,
                 CreditCardId = 1,
@@ -49,7 +46,6 @@ namespace AtmExercise.Data
 
             var operationTwo = new Operation
             {
-                Id = 2,
                 Code = OperationTypeEnum.Balance,
                 CreditCard = creditCardOne,
                 CreditCardId = 1,
@@ -59,7 +55,6 @@ namespace AtmExercise.Data
 
             var operationThree = new Operation
             {
-                Id = 3,
                 Code = OperationTypeEnum.WithDrawal,
                 CreditCard = creditCardOne,
                 CreditCardId = 1,
